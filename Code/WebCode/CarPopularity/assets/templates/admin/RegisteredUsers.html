@@ -1,0 +1,66 @@
+{%extends 'admin/adminbase.html'%}
+{%load static%}
+
+{%block contents%}
+
+     <!-- HERO -->
+     <section class="hero hero-bg d-flex justify-content-center align-items-center">
+               <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
+                              <div class="hero-text">
+<h2>View Registered users</h2>
+						<p>
+ <table border="2px" class="table table-hover table-dark">
+                    <thead>
+                    <tr class="table-danger">
+                        <th scope="col">S.No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Login ID</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Locality</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Activate</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr scope="row" style="color: BLUE; background-color:#FFFCBB">
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.loginid}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.locality}}</td>
+                        <td>{{i.status}}</td>
+
+                        {% if i.status == 'waiting' %}
+                        <td><a class="btn-link" href="/AdminActivaUsers/?uid={{ i.id }}"
+                               style="color:DARKBLUE">Activate</a></td>
+                        {% else %}
+                        <td> Activated</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+                                   <h1 class="text-white" data-aos="fade-up">We are ready for your digital marketing</h1>
+
+                                   <a href="contact.html" class="custom-btn btn-bg btn mt-3" data-aos="fade-up" data-aos-delay="100">Let us discuss together!</a>
+
+                                   <strong class="d-block py-3 pl-5 text-white" data-aos="fade-up" data-aos-delay="200"><i class="fa fa-phone mr-2"></i> +99 080 070 4224</strong>
+                              </div>
+                        </div>
+
+                    </div>
+               </div>
+     </section>
+
+
+{%endblock%}
